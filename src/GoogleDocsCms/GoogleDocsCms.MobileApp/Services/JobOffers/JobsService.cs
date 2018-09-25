@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GoogleDocsCms.MobileApp.Interfaces;
 using GoogleDocsCms.Shared.Models;
 using SheetToObjects.Lib;
-using GoogleDocsCms.MobileApp.Interfaces;
 using Xamarin.Forms;
-using System.Reflection;
-using System;
 
 namespace GoogleDocsCms.MobileApp.Handlers
 {
