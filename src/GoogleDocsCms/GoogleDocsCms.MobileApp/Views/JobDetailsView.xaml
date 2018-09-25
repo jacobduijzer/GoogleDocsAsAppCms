@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="GoogleDocsCms.MobileApp.Views.JobDetailsView"
+             Title="{Binding JobDetails.Title}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                
+                <BoxView HorizontalOptions="FillAndExpand"
+                         HeightRequest="4"
+                         BackgroundColor="{Binding JobDetails.Color}" />
+                
+                <StackLayout Orientation="Vertical"
+                         Padding="10">
+                
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Fill">
+                        <Label Text="Published:" 
+                               FontSize="Micro"/>
+                        <Label Text="{Binding JobDetails.Date}" 
+                               FontSize="Micro"/>
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Fill">
+                        <Label Text="Tags:" 
+                               FontSize="Micro"/>
+                        <Label Text="{Binding JobDetails.Tags}" 
+                               FontSize="Micro"/>
+                    </StackLayout>
+                    
+                    <BoxView HorizontalOptions="FillAndExpand"
+                         HeightRequest="1"
+                         BackgroundColor="{Binding JobDetails.Color}" />
+                    
+                    <Label Text="{Binding JobDetails.Introduction}" 
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="Default"/>
+                    
+                    <BoxView HorizontalOptions="FillAndExpand"
+                         HeightRequest="1"
+                         BackgroundColor="{Binding JobDetails.Color}" />
+                    
+                    <Label Text="{Binding JobDetails.Text}" 
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="Medium"/>
+                    
+                    <BoxView HorizontalOptions="FillAndExpand"
+                         HeightRequest="1"
+                         BackgroundColor="{Binding JobDetails.Color}" />
+                    
+                    <Button Text="Apply for this job!" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

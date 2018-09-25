@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="GoogleDocsCms.MobileApp.Views.JobListView"
+             xmlns:converters="clr-namespace:GoogleDocsCms.MobileApp.Converters"
+             xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+             Title="Jobs">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding JobOffers}"
+                  IsPullToRefreshEnabled="True"
+                  RefreshCommand="{Binding RefreshCommand}"
+                  IsRefreshing="{Binding IsRefreshing}"
+                  HasUnevenRows="true">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Vertical"
+                                         HorizontalOptions="FillAndExpand"
+                                         Margin="0"
+                                         Padding="10">
+                                <StackLayout Orientation="Horizontal"
+                                             HorizontalOptions="Fill">
+                                    <Label Text="{Binding Title}" 
+                                           HorizontalOptions="FillAndExpand" 
+                                           FontAttributes="Bold"/>
+                                    <Label Text="{Binding Date}" 
+                                           HorizontalTextAlignment="End" 
+                                           FontSize="Micro"/>
+                                </StackLayout>
+                            
+                                <Label Text="{Binding Introduction}" 
+                                       FontSize="Small"/>
+                                
+                                <Label Text="Read more >" 
+                                       FontSize="Small"
+                                       HorizontalTextAlignment="End"
+                                       TextColor="DodgerBlue" />
+                            </StackLayout>
+                            <BoxView  BackgroundColor="{Binding Color}"
+                                      WidthRequest="4"/>
+                        </StackLayout>
+                        
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+            <ListView.Behaviors>
+                    <behaviors:EventHandlerBehavior EventName="ItemSelected">
+                        <behaviors:InvokeCommandAction Command="{Binding ViewDetailsCommand}" 
+                                                       Converter="{StaticResource SelectedItemConverter}" />
+                    </behaviors:EventHandlerBehavior>
+                </ListView.Behaviors>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
